@@ -6,33 +6,45 @@ models:
       materialized: table
     columns:
       - name: number_of_orders
+        description: Total number of orders placed by the customer
         type: NUMBER
         tests: []
-        description: ""
       - name: first_name
+        description: Customer's given name
         type: TEXT
         tests: []
-        description: ""
       - name: last_name
+        description: Customer's family name
         type: TEXT
         tests: []
-        description: ""
       - name: customer_lifetime_value
         description: Estimated total revenue the customer will bring over their lifetime
         type: NUMBER
-        tests: []
+        tests:
+          - range_tolerance:
+              min: 0
+              max: 90000
+              tolerance: 0
       - name: customer_id
         description: Unique identifier for the customer
         type: NUMBER
-        tests: []
+        tests:
+          - not_null_tolerance:
+              tolerance: 0
+          - unique_tolerance:
+              tolerance: 0
       - name: first_order
+        description: Date of the first order placed by the customer
         type: DATE
-        tests: []
-        description: ""
+        tests:
+          - date_range_tolerance:
+              range_type: After
+              after: 2010-2-1
+              tolerance: 0
       - name: most_recent_order
+        description: Date of the most recent order placed by the customer
         type: DATE
         tests: []
-        description: ""
     meta:
       model_tags: []
       warehouse_type: snowflake
