@@ -1,0 +1,39 @@
+all_assets:
+  cleansed_customers:
+    name: cleansed_customers
+    description: ""
+    config:
+      materialized: table
+    columns:
+      - name: number_of_orders
+        type: NUMBER
+        tests: []
+        description: ""
+      - name: first_name
+        type: TEXT
+        tests: []
+        description: ""
+      - name: last_name
+        type: TEXT
+        tests: []
+        description: ""
+      - name: customer_lifetime_value
+        description: Estimated total revenue the customer will bring over their lifetime
+        type: NUMBER
+        tests: []
+      - name: customer_id
+        description: Unique identifier for the customer
+        type: NUMBER
+        tests: []
+      - name: first_order
+        type: DATE
+        tests: []
+        description: ""
+      - name: most_recent_order
+        type: DATE
+        tests: []
+        description: ""
+    meta:
+      model_tags: []
+      warehouse_type: snowflake
+    tests: []
